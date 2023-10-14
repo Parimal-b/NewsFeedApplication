@@ -16,8 +16,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class NewsViewModel(
-    val app: Application,
-    val getNewsHeadLinesUseCase: GetNewsHeadlinesUseCase
+    private val app:Application,
+    private val getNewsHeadlinesUseCase: GetNewsHeadlinesUseCase
 ) : AndroidViewModel(app) {
     val newsHeadlines: MutableLiveData<Resource<APIResponse>> = MutableLiveData()
 
@@ -25,7 +25,7 @@ class NewsViewModel(
         newsHeadlines.postValue(Resource.Loading())
         try {
             if (isNetworkAvailable(app)) {
-                val apiResult = getNewsHeadLinesUseCase.execute(country, page)
+                val apiResult = getNewsHeadlinesUseCase.execute(country, page)
                 newsHeadlines.postValue(apiResult)
             } else {
                 newsHeadlines.postValue(Resource.Error("Internet is not available"))
