@@ -1,6 +1,7 @@
 package com.example.newsfeedapp.presentation.di
 
 import android.app.Application
+import com.example.newsfeedapp.domain.usecase.DeleteSavedNewsUseCase
 import com.example.newsfeedapp.domain.usecase.GetNewsHeadlinesUseCase
 import com.example.newsfeedapp.domain.usecase.GetSavedNewsUseCase
 import com.example.newsfeedapp.domain.usecase.GetSearchedNewsUseCase
@@ -23,14 +24,16 @@ class FactoryModule {
         getNewsHeadlinesUseCase: GetNewsHeadlinesUseCase,
         getSearchedNewsUseCase: GetSearchedNewsUseCase,
         saveNewsUseCase: SaveNewsUseCase,
-        getSavedNewsUseCase: GetSavedNewsUseCase
+        getSavedNewsUseCase: GetSavedNewsUseCase,
+        deleteSavedNewsUseCase: DeleteSavedNewsUseCase
     ): NewsViewModelFactory {
         return NewsViewModelFactory(
             application,
             getNewsHeadlinesUseCase,
             getSearchedNewsUseCase,
             saveNewsUseCase,
-            getSavedNewsUseCase
+            getSavedNewsUseCase,
+            deleteSavedNewsUseCase
         )
     }
 }
