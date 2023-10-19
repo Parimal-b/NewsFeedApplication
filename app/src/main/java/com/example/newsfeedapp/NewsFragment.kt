@@ -52,8 +52,8 @@ class NewsFragment : Fragment() {
                 if (it.content.isNullOrEmpty()){
                     it.content = ""
                 }
-                if (it.source.id.isNullOrEmpty()){
-                    it.source.id = ""
+                if (it.source?.id.isNullOrEmpty()){
+                    it.source?.id = ""
                 }
                 putSerializable("selectedItem", it)
             }
